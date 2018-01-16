@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lokey.second.web.dao.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.lokey.second.web.entity.Goods">
+    <id column="pk_id" jdbcType="INTEGER" property="pkId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="des" jdbcType="VARCHAR" property="des" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="is_checked" jdbcType="INTEGER" property="isChecked" />
+    <result column="is_sell" jdbcType="INTEGER" property="isSell" />
+    <result column="cate_id" jdbcType="INTEGER" property="cateId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pk_id, name, image, price, des, user_id, is_checked, is_sell, cate_id, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_goods
+    where pk_id = #{pkId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_goods
+    where pk_id = #{pkId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lokey.second.web.entity.Goods">
+    insert into t_goods (pk_id, name, image, 
+      price, des, user_id, 
+      is_checked, is_sell, cate_id, 
+      create_time)
+    values (#{pkId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DOUBLE}, #{des,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{isChecked,jdbcType=INTEGER}, #{isSell,jdbcType=INTEGER}, #{cateId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lokey.second.web.entity.Goods">
+    insert into t_goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pkId != null">
+        pk_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="des != null">
+        des,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="isChecked != null">
+        is_checked,
+      </if>
+      <if test="isSell != null">
+        is_sell,
+      </if>
+      <if test="cateId != null">
+        cate_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pkId != null">
+        #{pkId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="des != null">
+        #{des,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="isChecked != null">
+        #{isChecked,jdbcType=INTEGER},
+      </if>
+      <if test="isSell != null">
+        #{isSell,jdbcType=INTEGER},
+      </if>
+      <if test="cateId != null">
+        #{cateId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lokey.second.web.entity.Goods">
+    update t_goods
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="des != null">
+        des = #{des,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="isChecked != null">
+        is_checked = #{isChecked,jdbcType=INTEGER},
+      </if>
+      <if test="isSell != null">
+        is_sell = #{isSell,jdbcType=INTEGER},
+      </if>
+      <if test="cateId != null">
+        cate_id = #{cateId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where pk_id = #{pkId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lokey.second.web.entity.Goods">
+    update t_goods
+    set name = #{name,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      des = #{des,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      is_checked = #{isChecked,jdbcType=INTEGER},
+      is_sell = #{isSell,jdbcType=INTEGER},
+      cate_id = #{cateId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where pk_id = #{pkId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_goods WHERE 1 = 1
+    <if test="isChecked != null and isChecked != null">
+      AND is_checked = #{isChecked,jdbcType=INTEGER}
+    </if>
+    <if test="isSell != null and isChecked != null">
+      AND is_sell = #{isSell,jdbcType=INTEGER}
+    </if>
+    <if test="cateId != null and cateId != null">
+      AND cate_id = #{cateId,jdbcType=INTEGER}
+    </if>
+    ORDER BY create_time DESC
+    <if test="start != null and end != null">
+      LIMIT #{start},#{end}
+    </if>
+  </select>
+
+  <select id="count" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select
+    COUNT(1)
+    from t_goods WHERE 1 = 1
+    <if test="isChecked != null and isChecked != null">
+      AND is_checked = #{isChecked,jdbcType=INTEGER}
+    </if>
+    <if test="isSell != null and isChecked != null">
+      AND is_sell = #{isSell,jdbcType=INTEGER}
+    </if>
+    <if test="cateId != null and cateId != null">
+      AND cate_id = #{cateId,jdbcType=INTEGER}
+    </if>
+  </select>
+</mapper>

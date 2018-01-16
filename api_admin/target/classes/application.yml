@@ -1,0 +1,28 @@
+  spring:
+    application:
+        name: user
+
+    profiles:
+        active: dev
+    mvc:
+        throw-exception-if-no-handler-found: true
+
+    resources:
+     static-locations: classpath:/resorces/,upload
+
+  # LOGGING
+  logging:
+      config: classpath:log/logback-spring.xml
+
+  mybatis:
+    type-aliases-package: com.lokey.second.web.entity
+    mapper-locations: classpath:com/lokey/second/web/mapper/*.xml
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+#项目服务器配置
+  spring:
+    datasource:
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://115.159.104.226:3306/activitycall?useUnicode=true&characterEncoding=UTF-8
+          username: root
+          password: yzx20172017
+    redis:
+          host:  127.0.0.1
+          password:
+          port: 6379
+          pool:
+              max-idle: 100
+              min-idle: 1
+              max-active: 300
+              max-wait: 5000
+          timeout: 3000
+
+#101.132.155.25
+#password: lazyMonkey1007
+#rm-uf6khzrtm5t7b3uw5.mysql.rds.aliyuncs.com
+#username: lazymonkey
+#password: lazyMonkey20171007
+
+  server:
+      port: 8083
+#      context-path: /css
+
+
+
+
+
+
+#  rabbitmq:
+#      host: 127.0.0.1
+#      port: 5672
+#      username: guest
+#      password: guest
+
+
+
+

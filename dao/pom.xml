@@ -1,0 +1,132 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>SecondMarket</artifactId>
+        <groupId>SecondMarket</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>dao</artifactId>
+    <packaging>jar</packaging>
+    <name>dao</name>
+    <url>http://maven.apache.org</url>
+
+
+    <properties>
+        <!-- plugin setting -->
+        <mybatis.generator.generatorConfig.xml>${basedir}/src/main/resources/mybatis/generatorConfig.xml</mybatis.generator.generatorConfig.xml>
+        <!-- plugin version -->
+        <plugin.mybatis.generator>1.3.5</plugin.mybatis.generator>
+        <plugin.maven-compiler>3.6.1</plugin.maven-compiler>
+        <!-- lib versions -->
+        <spring.boot.version>1.5.3.RELEASE</spring.boot.version>
+        <mybatis.boot.version>1.3.0</mybatis.boot.version>
+        <pagehelper.boot.version>1.1.1</pagehelper.boot.version>
+        <druid.verison>1.0.27</druid.verison>
+        <guava.verison>21.0</guava.verison>
+        <jjwt.version>0.7.0</jjwt.version>
+        <fastjson.version>1.2.25</fastjson.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>SecondMarket</groupId>
+            <artifactId>utils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!--Spring boot-->
+        <!-- AOP -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+            <version>1.5.3.RELEASE</version>
+        </dependency>
+        <!-- REDIS -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>1.5.3.RELEASE</version>
+        </dependency>
+        <!-- WEB -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>1.5.6.RELEASE</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>1.5.7.RELEASE</version>
+        </dependency>
+        <!-- mybatis -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis.boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>${pagehelper.boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.43</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>1.5.6.RELEASE</version>
+        </dependency>
+        <!-- druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.verison}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <!-- Guava  -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.verison}</version>
+        </dependency>
+        <!--JWT -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>${plugin.mybatis.generator}</version>
+                <configuration>
+                    <verbose>false</verbose>
+                    <overwrite>false</overwrite>
+                    <configurationFile>
+                        ${mybatis.generator.generatorConfig.xml}
+                    </configurationFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lokey.second.web.dao.GoodsBiddingResultMapper">
+  <resultMap id="BaseResultMap" type="com.lokey.second.web.entity.GoodsBiddingResult">
+    <id column="pk_id" jdbcType="INTEGER" property="pkId" />
+    <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="bidding_id" jdbcType="INTEGER" property="biddingId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pk_id, goods_id, bidding_id, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_goods_bidding_result
+    where pk_id = #{pkId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_goods_bidding_result
+    where pk_id = #{pkId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lokey.second.web.entity.GoodsBiddingResult">
+    insert into t_goods_bidding_result (pk_id, goods_id, bidding_id, 
+      create_time)
+    values (#{pkId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{biddingId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lokey.second.web.entity.GoodsBiddingResult">
+    insert into t_goods_bidding_result
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pkId != null">
+        pk_id,
+      </if>
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="biddingId != null">
+        bidding_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pkId != null">
+        #{pkId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="biddingId != null">
+        #{biddingId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lokey.second.web.entity.GoodsBiddingResult">
+    update t_goods_bidding_result
+    <set>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="biddingId != null">
+        bidding_id = #{biddingId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where pk_id = #{pkId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lokey.second.web.entity.GoodsBiddingResult">
+    update t_goods_bidding_result
+    set goods_id = #{goodsId,jdbcType=INTEGER},
+      bidding_id = #{biddingId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where pk_id = #{pkId,jdbcType=INTEGER}
+  </update>
+</mapper>

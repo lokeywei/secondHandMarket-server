@@ -1,0 +1,22 @@
+#项目服务器配置
+  spring:
+    datasource:
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/secondmarket?useUnicode=true&characterEncoding=utf8
+          username: root
+          password: root
+#    redis:
+#          host:  127.0.0.1
+#          password:
+#          port: 6379
+#          pool:
+#              max-idle: 100
+#              min-idle: 1
+#              max-active: 300
+#              max-wait: 5000
+#          timeout: 3000
+
+
+
+
+
